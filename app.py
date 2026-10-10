@@ -7,8 +7,9 @@ from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 st.title("🎭 Calavera AR - Día de Muertos")
 st.write("Permite el acceso a tu cámara para ver la máscara interactiva en tiempo real.")
 
-# Inicializar MediaPipe Face Mesh fuera del procesador para eficiencia
-mp_face_mesh = mp.solutions.face_mesh
+# Inicializar MediaPipe Face Mesh usando la ruta directa compatible
+mp_face_mesh = mp.python.solutions.face_mesh if hasattr(mp, "python") else mp.solutions
+
 face_mesh = mp_face_mesh.FaceMesh(
     static_image_mode=False,
     max_num_faces=1,
@@ -66,4 +67,4 @@ class CalaveraTransformer(VideoTransformerBase):
 
         return img
 
-webrtc_streamer(key="calavera", video_transformer_factory=CalaveraTransformer)
+webrtc_streamer(key="calavera", video_transformer_factory=CalaveraTransformer)ctory=CalaveraTransformer)
