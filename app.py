@@ -67,4 +67,4 @@ class CalaveraTransformer(VideoTransformerBase):
 
         return img
 
-webrtc_streamer(key="calavera", video_transformer_factory=CalaveraTransformer)ctory=CalaveraTransformer)
+webrtc_streamer(key="calavera", video_transformer_factory=CalaveraTransformer)
